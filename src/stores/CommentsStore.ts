@@ -1,8 +1,12 @@
-import { action, makeObservable, observable } from "mobx";
+import { computed, action, makeObservable, observable } from "mobx";
 
 export interface IComment {
     id: number,
     comment: string,
+}
+
+export interface IStatus {
+    allTasks: number;
 }
 
 export default class CommentsStore {
@@ -16,5 +20,12 @@ export default class CommentsStore {
 
     @action removeComment = (id: number) => {
         this.comments = this.comments.filter(c => c.id !== id);
+    }
+
+    @computed get status(): IStatus {
+        const allTasks = this.comments.length;
+        return {
+            allTasks
+        }
     }
 }

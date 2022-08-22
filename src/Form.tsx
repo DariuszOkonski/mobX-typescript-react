@@ -7,7 +7,8 @@ import { observer } from 'mobx-react';
 const Form: FC = () => {
     const [inputData, setInputData] = useState<string>('')
 
-    const { addComment } = useCommentsStore();
+    const { addComment, status } = useCommentsStore();
+    const { allTasks } = status;
 
     const handleOnChange = (event:  React.ChangeEvent<HTMLInputElement>) => {
         setInputData(event.target.value)
@@ -30,6 +31,8 @@ const Form: FC = () => {
 
     return (
         <form onSubmit={(event) => handleSubmit(event)}>
+            AllComments: {allTasks}
+            <br />
             <label>
                 Add Comment:
                 <br />
