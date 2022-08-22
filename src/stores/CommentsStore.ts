@@ -1,6 +1,6 @@
 import { action, makeObservable, observable } from "mobx";
 
-interface IComment {
+export interface IComment {
     id: number,
     comment: string,
 }
